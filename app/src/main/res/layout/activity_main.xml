@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_width"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_top"
+        android:background="@color/white">
+        <View
+            android:id="@+id/view_without1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50">
+        </View>
+        <FrameLayout
+            android:id="@+id/layout_green"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="match_parent"
+            android:background="@color/green">
+            <View
+                android:id="@+id/layout_orange"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/orange">
+            </View>
+        </FrameLayout>
+
+        <View
+            android:id="@+id/view_without2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50">
+        </View>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin_top_seekbar">
+        <SeekBar
+            android:id="@+id/sb1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/margin_between_seekbar"
+            android:progress="50"
+            android:max="100">
+        </SeekBar>
+        <SeekBar
+            android:id="@+id/sb2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:progress="50"
+            android:max="100">
+        </SeekBar>
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_top">64dp</dimen>
+    <dimen name="layout_width">120dp</dimen>
+    <dimen name="margin_top_seekbar">250dp</dimen>
+    <dimen name="margin_between_seekbar">20dp</dimen>
+    <dimen name="small_size">88</dimen>
+    <dimen name="margin_orange">32</dimen>
+</resources>
