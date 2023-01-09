@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID/my_projects/NataAndroid/TASK_STAS/TaskStasTwoSeekBar/TaskStasSeekbar/app/src/main/res/layout/activity_main.xml" value="0.19722222222222222" />
         <entry key="..\:/Androidlessons/TaskStasSeekbar/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

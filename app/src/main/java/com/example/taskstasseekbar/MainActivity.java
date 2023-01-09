@@ -3,9 +3,7 @@ package com.example.taskstasseekbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
@@ -13,14 +11,12 @@ import android.widget.SeekBar;
 public class MainActivity extends AppCompatActivity{
     SeekBar sb1;
     SeekBar sb2;
-    View view1_without;
-    View view2_without;
-    View view_orange;
-    FrameLayout ll_green;
+    View viewSpaceLeft;
+    View viewSpaceRight;
+    FrameLayout viewOut;
+    View viewInner;
 
-    LinearLayout.LayoutParams lParams_view1_without;
-    LinearLayout.LayoutParams lParams_view2_without;
-    FrameLayout.LayoutParams lParams_orange;
+    private int maxMarginPx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,33 +24,32 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         sb1 = (SeekBar) findViewById(R.id.sb1);
-        sb1.setOnSeekBarChangeListener(sb1_listener);
+        sb1.setOnSeekBarChangeListener(sb1ChangeListener);
         sb2 = (SeekBar) findViewById(R.id.sb2);
-        sb2.setOnSeekBarChangeListener(sb2_listener);
+        sb2.setOnSeekBarChangeListener(sb2ChangeListener);
 
-        view1_without = (View) findViewById(R.id.view_without1);
-        view2_without = (View) findViewById(R.id.view_without2);
-        view_orange = (View) findViewById(R.id.layout_orange);
+        viewSpaceLeft = (View) findViewById(R.id.view_without1);
+        viewSpaceRight = (View) findViewById(R.id.view_without2);
+        viewInner = (View) findViewById(R.id.layout_orange);
 
-        ll_green = (FrameLayout) findViewById(R.id.layout_green);
+        viewOut = (FrameLayout) findViewById(R.id.layout_green);
 
-        lParams_view1_without = (LinearLayout.LayoutParams) view1_without.getLayoutParams();
-        lParams_view2_without = (LinearLayout.LayoutParams) view2_without.getLayoutParams();
+        maxMarginPx = getResources().getDimensionPixelSize(R.dimen.margin_orange);
 
-        lParams_orange = (FrameLayout.LayoutParams) view_orange.getLayoutParams();
+        sb2ChangeListener.onProgressChanged(sb2, sb2.getProgress(), false);
     }
 
-    SeekBar.OnSeekBarChangeListener sb1_listener = new SeekBar.OnSeekBarChangeListener() {
+    private final SeekBar.OnSeekBarChangeListener sb1ChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
-        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            int leftValue = i;
-            int rightValue = seekBar.getMax() - leftValue;
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            LinearLayout.LayoutParams lpLeft = (LinearLayout.LayoutParams) viewSpaceLeft.getLayoutParams();
+            LinearLayout.LayoutParams lpRight = (LinearLayout.LayoutParams) viewSpaceRight.getLayoutParams();
 
-            lParams_view1_without.weight = leftValue;
-            lParams_view2_without.weight = rightValue;
+            lpLeft.weight = progress;
+            lpRight.weight = seekBar.getMax() - progress;
 
-            view1_without.setLayoutParams(lParams_view1_without);
-            view2_without.setLayoutParams(lParams_view2_without);
+            viewSpaceLeft.setLayoutParams(lpLeft);
+            viewSpaceRight.setLayoutParams(lpRight);
         }
 
         @Override
@@ -68,14 +63,17 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
-    SeekBar.OnSeekBarChangeListener sb2_listener = new SeekBar.OnSeekBarChangeListener() {
+    private final SeekBar.OnSeekBarChangeListener sb2ChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
-        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
 
-            int rightValueOrange = (seekBar.getProgress() * 100)/R.dimen.margin_orange;
-            lParams_orange.setMargins(rightValueOrange, rightValueOrange, rightValueOrange, rightValueOrange);
-            view_orange.setLayoutParams(lParams_orange);
+            int p = progress * maxMarginPx / seekBar.getMax();
+            viewOut.setPadding(p, p, p, p);
 
+            // Another implementation using margins
+            //FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) viewInner.getLayoutParams();
+            //lp.setMargins(margin, margin, margin, margin);
+            //viewInner.setLayoutParams(lp);
         }
 
         @Override

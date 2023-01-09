@@ -3,7 +3,7 @@
     <dimen name="margin_top">64dp</dimen>
     <dimen name="layout_width">120dp</dimen>
     <dimen name="margin_top_seekbar">250dp</dimen>
-    <dimen name="margin_between_seekbar">20dp</dimen>
-    <dimen name="small_size">88</dimen>
-    <dimen name="margin_orange">32</dimen>
+    <dimen name="margin_between_seekbar">32dp</dimen>
+    <dimen name="small_size">88dp</dimen>
+    <dimen name="margin_orange">32dp</dimen>
 </resources>
